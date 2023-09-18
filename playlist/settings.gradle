@@ -1,4 +1,3 @@
-rootProject.name = 'playlist'
-
+rootProject.name = 'Playlist'
 
 includeFlat 'JPAPlaylist'

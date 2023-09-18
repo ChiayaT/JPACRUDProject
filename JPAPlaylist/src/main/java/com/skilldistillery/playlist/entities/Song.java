@@ -1,7 +1,5 @@
 package com.skilldistillery.playlist.entities;
 
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,21 +7,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
 public class Song {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String artist;
-	
 	private String title;
 	
-	@Column(name = "image_url")
+	private String artist;
+	
+	@Column(name="image_url")
 	private String imageUrl;
+	
+	private String Genre;
+	
+	private String Description;
 
 	public Song() {
 		super();
+	}
+
+	public Song(String title, String artist, String imageUrl, String genre, String description) {
+		super();
+		this.title = title;
+		this.artist = artist;
+		this.imageUrl = imageUrl;
+		Genre = genre;
+		Description = description;
 	}
 
 	public String getImageUrl() {
@@ -34,10 +46,20 @@ public class Song {
 		this.imageUrl = imageUrl;
 	}
 
-	public Song(String artist, String title) {
-		super();
-		this.artist = artist;
-		this.title = title;
+	public String getGenre() {
+		return Genre;
+	}
+
+	public void setGenre(String genre) {
+		Genre = genre;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
 	}
 
 	public int getId() {
@@ -48,14 +70,6 @@ public class Song {
 		this.id = id;
 	}
 
-	public String getArtist() {
-		return artist;
-	}
-
-	public void setArtist(String artist) {
-		this.artist = artist;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -64,28 +78,18 @@ public class Song {
 		this.title = title;
 	}
 
+	public String getArtist() {
+		return artist;
+	}
+
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
 	@Override
 	public String toString() {
-		return "Song [id=" + id + ", artist=" + artist + ", title=" + title + "]";
+		return "Song [id=" + id + ", title=" + title + ", artist=" + artist + "]";
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(artist, id, title);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Song other = (Song) obj;
-		return Objects.equals(artist, other.artist) && id == other.id && Objects.equals(title, other.title);
-	}
-	
 	
 	
 }
